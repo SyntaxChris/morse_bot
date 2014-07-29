@@ -2,10 +2,10 @@ require 'rest-client'
 
 class Morse
   short = lambda {
-    # puts "short"
+    url = 'http://'
   }
   long = lambda {
-    # puts "long"
+    url = 'http://'
   }
 
   LTR_TO_MORSE = {
