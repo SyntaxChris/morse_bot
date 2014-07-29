@@ -1,2 +1,15 @@
-<h1>Messages#show</h1>
-<p>Find me in app/views/messages/show.html.erb</p>
+<div>
+  <%= @message.title %>
+</div>
+
+<div>
+  <%= @message.content %>
+</div>
+
+<div>
+  <% if @message.urgent %>
+    <strong>This message is fucking urgent!</strong>
+  <% end %>
+</div>
+
+<%= link_to "Delete", message_path, :confirm => "Are you sure?", :method=>:delete %>

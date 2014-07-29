@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
   def index
+    @messages = Message.all
   end
 
   def show
+    @message = Message.find(params[:id])
   end
 
   def new
@@ -10,5 +12,22 @@ class MessagesController < ApplicationController
   end
 
   def create
+    message = Message.create(message_params)
+
+    if message.save
+      redirect_to messages_path
+    else
+      redirect_to new_message_path
+    end
+  end
+
+  def destroy
+    binding.pry
+    Message.destroy(params[:id])
+  end
+
+private
+  def message_params
+    params.require(:message).permit(:title, :content, :urgent)
   end
 end

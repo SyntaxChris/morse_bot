@@ -1,2 +1,17 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<% @messages.each do |message| %>
+
+  <div>
+    <%= link_to message.title, message_path(message.id) %>
+  </div>
+
+  <div>
+    <%= message.content %>
+  </div>
+
+  <div>
+    <% if message.urgent %>
+      <strong>This message is fucking urgent!</strong>
+    <% end %>
+  </div>
+
+<% end %>
