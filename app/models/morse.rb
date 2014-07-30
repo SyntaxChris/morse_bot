@@ -17,12 +17,16 @@ class Morse
 
   short = lambda {
     request("http://arduino.local/", "digital", "8", "1")
+    sleep(250)
     request("http://arduino.local/", "digital", "8", "0")
+    sleep(250)
   }
 
   long = lambda {
     request("http://arduino.local/", "digital", "8", "1")
+    sleep(500)
     request("http://arduino.local/", "digital", "8", "0")
+    sleep(250)
   }
 
   LTR_TO_MORSE = {
@@ -51,9 +55,19 @@ class Morse
     W: [short, long, long],
     X: [long, short, short, long],
     Y: [long, short, long, long],
-    Z: [long, long, short, short]
+    Z: [long, long, short, short],
+    1: [short, long, long, long, long],
+    2: [short, short, long, long, long],
+    3: [short, short, short, long, long],
+    4: [short, short, short, short, long],
+    5: [short, short, short, short, short],
+    6: [long, short, short, short, short],
+    7: [long, long, short, short, short],
+    8: [long, long, long, short, short],
+    9: [long, long, long, long, short],
+    0: [long, long, long, long, long]
   }
 end
 
 test_morse = Morse.new
-test_morse.convert_message("Hello")
+test_morse.convert_message("b")
