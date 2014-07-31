@@ -51,8 +51,12 @@
             <tr>
               <td>message.email</td>
               <td><%=link_to message.title, message_path(message.id) %></td>
-              <td><%=link_to message.urgent, message_path(message.id) %></td>
-              <td><%=link_to message.read, message_path(message.id) %></td>
+              <td><%= message.urgent %></td>
+              <td>
+              <% if message.read %>
+                <i class="fa fa-check-circle"></i> fa-check-circle
+              <% end%>
+              </td>
             </tr>
             </a>
             <% end %>

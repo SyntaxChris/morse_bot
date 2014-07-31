@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'pry'
@@ -17,4 +18,3 @@ end
 group :production do
   gem 'pg'
 end
-
