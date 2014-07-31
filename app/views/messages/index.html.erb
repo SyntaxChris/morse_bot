@@ -53,9 +53,9 @@
               <td><%=link_to message.title, message_path(message.id) %></td>
               <td><%= message.urgent %></td>
               <td>
-              <% if message.read %>
-                <i class="fa fa-check-circle"></i> fa-check-circle
-              <% end%>
+                <% if message.read %>
+                  <i class="fa fa-check-circle"></i>
+                <% end%>
               </td>
             </tr>
             </a>

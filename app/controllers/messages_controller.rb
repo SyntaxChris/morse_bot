@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
     if @message
       @message.read = true
+      @message.save
     end
   end
 
