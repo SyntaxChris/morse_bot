@@ -1,4 +1,3 @@
-// $(document).ready(function(){});
 $(document).on('page:change', function(){
   var decrypt_button  = $('#decrypt-message'),
       message_content = $('#message-content').text();
