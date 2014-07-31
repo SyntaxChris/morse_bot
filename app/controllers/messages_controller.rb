@@ -22,7 +22,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     Message.destroy(params[:id])
   end
 

@@ -1,9 +1,29 @@
-<%= form_for(@message) do |f| %>
+<div class="panel panel-default">
 
-  <%= f.text_field :title, placeholder: "title" %></br>
-  <%= f.text_field :content, placeholder: "content" %></br>
-  <%= f.label :urgent %>
-  <%= f.check_box :urgent %></br>
-  <%= f.submit %>
+  <div class="panel-heading">
+    <div class="panel-title">Compose new message</div>
+  </div>
 
-<% end %>
+  <div class="panel-body">
+
+    <%= form_for(@message) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box :urgent %>
+        <%= f.label :urgent %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Send", class: "btn btn-default" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
