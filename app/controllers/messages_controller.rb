@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  # before_action :correct_user, except: [:index, :new, :create ]
+
   def index
-    @messages = Message.all
+    @messages = Message.all.where("user_id = #{current_user.id}")
   end
 
   def show
@@ -13,17 +16,15 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    @message = current_user.messages.build
   end
 
   def create
-    message = Message.create(message_params)
+    @message = Message.create(message_params)
+    @message.user_id = current_user.id
+    @message.save
 
-    if message.save
-      redirect_to messages_path
-    else
-      redirect_to new_message_path
-    end
+    redirect_to @message.save ? messages_path : new_message_path
   end
 
   def destroy
@@ -34,5 +35,10 @@ class MessagesController < ApplicationController
 private
   def message_params
     params.require(:message).permit(:title, :content, :urgent)
+  end
+
+  def correct_user
+    @message = current_user.messages.find(params[:id]) if user_signed_in?
+    redirect_to messages_path if @message.nil?
   end
 end
