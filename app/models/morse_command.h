@@ -30,8 +30,6 @@ Adafruit_CC3000_Server restServer(LISTEN_PORT);
 MDNSResponder mdns;
 
 // Variables to be exposed to the API
-int temperature;
-int humidity;
 int ledEyes = 7;
 int ledAnt = 8;
 int beep = 9;
@@ -118,7 +116,7 @@ bool displayConnectionDetails(void)
 }
 
 //MORSE LOGIC
-
+//=============================================================
 //define short morse function
 void shortMorse(){
   // turn pin on
@@ -126,13 +124,13 @@ void shortMorse(){
   digitalWrite(ledAnt, HIGH);
   analogWrite(beep, 180);
   // delay for a short amount of time
-  delay(80);
+  delay(60);
   // turn pin off
   digitalWrite(ledEyes, LOW);
   digitalWrite(ledAnt, LOW);
   analogWrite(beep, 0);
   // delay for space between beeps
-  delay(80);
+  delay(60);
 
 }
 
@@ -149,10 +147,25 @@ void longMorse(){
   digitalWrite(ledAnt, LOW);
   analogWrite(beep, 0);
   // delay for space between beeps
-  delay(80);
+  delay(60);
 
 }
 
+//define urgent intro alert
+void urgent(){
+
+  for(int k=0; k<3; k++){
+    digitalWrite(ledAnt, HIGH);
+    analogWrite(beep, 255);
+    delay(500);
+    digitalWrite(ledAnt, LOW);
+    analogWrite(beep, 0);
+    delay(500);
+  }
+  delay(1000);
+
+}
+//=============================================================
 //create array of function pointers for each letter
 
  //A
@@ -365,9 +378,9 @@ int z(void){
 }
 //SPACE
 int space(void){
-  delay(80);
+  delay(60);
 }
-
+//=============================================================
 // Custom function accessible by the API
 int morseCommand(String command) {
 
@@ -377,91 +390,95 @@ int morseCommand(String command) {
     Serial.println("Command recieved");
   }
 
+  if(command[0] == '^') {
+    urgent();
+  }
+
   for (int i = 0; command[i] != '\0'; i++){
 
-    if (command[i] == 'a') {
-      a();
-    }
-    if (command[i] == 'b') {
-      b();
-    }
-    if (command[i] == 'c') {
-      c();
-    }
-    if (command[i] == 'd') {
-      d();
-    }
-    if (command[i] == 'e') {
-      e();
-    }
-    if (command[i] == 'f') {
-      f();
-    }
-    if (command[i] == 'g') {
-      g();
-    }
-    if (command[i] == 'h') {
-      h();
-    }
-    if (command[i] == 'i') {
-      ix();
-    }
-    if (command[i] == 'j') {
-      j();
-    }
-    if (command[i] == 'k') {
-      k();
-    }
-    if (command[i] == 'l') {
-      l();
-    }
-    if (command[i] == 'm') {
-      m();
-    }
-    if (command[i] == 'n') {
-      n();
-    }
-    if (command[i] == 'o') {
-      o();
-    }
-    if (command[i] == 'p') {
-      p();
-    }
-    if (command[i] == 'q') {
-      q();
-    }
-    if (command[i] == 'r') {
-      r();
-    }
-    if (command[i] == 's') {
-      s();
-    }
-    if (command[i] == 't') {
-      t();
-    }
-    if (command[i] == 'u') {
-      u();
-    }
-    if (command[i] == 'v') {
-      v();
-    }
-    if (command[i] == 'w') {
-      w();
-    }
-    if (command[i] == 'x') {
-      x();
-    }
-    if (command[i] == 'y') {
-      y();
-    }
-    if (command[i] == 'z') {
-      z();
-    }
-    else {
-      space();
-    }
-
+      if (command[i] == 'a') {
+        a();
+      }
+      if (command[i] == 'b') {
+        b();
+      }
+      if (command[i] == 'c') {
+        c();
+      }
+      if (command[i] == 'd') {
+        d();
+      }
+      if (command[i] == 'e') {
+        e();
+      }
+      if (command[i] == 'f') {
+        f();
+      }
+      if (command[i] == 'g') {
+        g();
+      }
+      if (command[i] == 'h') {
+        h();
+      }
+      if (command[i] == 'i') {
+        ix();
+      }
+      if (command[i] == 'j') {
+        j();
+      }
+      if (command[i] == 'k') {
+        k();
+      }
+      if (command[i] == 'l') {
+        l();
+      }
+      if (command[i] == 'm') {
+        m();
+      }
+      if (command[i] == 'n') {
+        n();
+      }
+      if (command[i] == 'o') {
+        o();
+      }
+      if (command[i] == 'p') {
+        p();
+      }
+      if (command[i] == 'q') {
+        q();
+      }
+      if (command[i] == 'r') {
+        r();
+      }
+      if (command[i] == 's') {
+        s();
+      }
+      if (command[i] == 't') {
+        t();
+      }
+      if (command[i] == 'u') {
+        u();
+      }
+      if (command[i] == 'v') {
+        v();
+      }
+      if (command[i] == 'w') {
+        w();
+      }
+      if (command[i] == 'x') {
+        x();
+      }
+      if (command[i] == 'y') {
+        y();
+      }
+      if (command[i] == 'z') {
+        z();
+      }
+      else {
+        space();
+      }
   }
+//=============================================================
   Serial.println("Command executed");
   return 1;
 }
