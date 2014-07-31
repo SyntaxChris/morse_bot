@@ -1,15 +1,8 @@
-<div>
-  <%= @message.title %>
-</div>
-
-<div>
-  <%= @message.content %>
-</div>
-
-<div>
-  <% if @message.urgent %>
-    <strong>This message is fucking urgent!</strong>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4><%= @message.title %></h4>
+    <p><%= @message.content %></p>
+  </div>
 </div>
 
 <%= link_to "Delete", message_path, :confirm => "Are you sure?", :method=>:delete %>
