@@ -15,6 +15,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def arduino
+    message = params[:message].downcase.gsub(" ", "+")
+    RestClient.get("arduino.local/morse?params=#{message}")
+    render nothing: true, status: 200
+  end
+
   def new
     @message = current_user.messages.build
   end
