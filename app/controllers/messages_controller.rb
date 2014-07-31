@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
 
   def destroy
     Message.destroy(params[:id])
+    redirect_to messages_path
   end
 
 private
