@@ -5,6 +5,10 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+
+    if @message
+      @message.read = true
+    end
   end
 
   def new
