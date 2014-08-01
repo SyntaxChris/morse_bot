@@ -15,10 +15,17 @@ $(document).on('page:change', function(){
 
     if(current_value.length > 0 && current_value.length < 10) {
 
-      $.getJSON('/find-username').success(function(){
+      // $('ul#user-results').html('');
+      $.getJSON('/find-username', {query: current_value}).success(function(response){
+        // console.log(response);
 
+        $.each(response, function(index, user){
+          $('ul#user-results').html('<li>'+user.email+'</li>');
+        });
+        
       });
 
     }
   });
+
 });

@@ -3,8 +3,8 @@ class MessagesController < ApplicationController
   respond_to :json
 
   def index
-    @messages = current_user.messages.all
-    # Message.all.where("user_id = #{current_user.id}")
+    # @messages = current_user.messages.all
+    @messages = Message.all.where("user_id = #{current_user.id}")
   end
 
   def show

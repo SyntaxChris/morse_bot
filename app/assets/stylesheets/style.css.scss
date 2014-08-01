@@ -114,3 +114,14 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+/* autocomplete */
+#send-to {
+  position: relative;
+}
+#user-results {
+  position: absolute;
+  top: 34px;
+  background-color: #fff;
+  width: 100%;
+}
