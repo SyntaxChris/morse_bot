@@ -7,53 +7,66 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <div class="panel-title">Sign in</div>
+        <div class="panel-title">Sign up</div>
       </div>
 
       <div class="panel-body">
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+          <div class="form-group">
+            <%= f.label :username, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :username, class: "form-control", autofocus: true %>
+            </div>
+          </div>
+
           <div class="form-group">
             <%= f.label :email, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
-              <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+              <%= f.email_field :email, class: "form-control", autocomplete: true %>
             </div>
           </div>
 
           <div class="form-group">
             <%= f.label :password, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
-              <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
             </div>
           </div>
 
+
           <div class="form-group">
-            <%= f.label "Confirm", class: "col-sm-2 control-label" %>
+            <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
             <div class="col-sm-10">
-              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
-                <label>
-                  <% if devise_mapping.rememberable? -%>
-                    <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me %>
-                  <% end -%>
-                </label>
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                <% end -%>
               </div>
             </div>
           </div>
-
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <%= f.submit "Sign up", class: "btn btn-default" %>
             </div>
           </div>
+
         <% end %>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
 
       </div>
     </div>

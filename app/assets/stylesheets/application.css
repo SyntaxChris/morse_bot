@@ -15,3 +15,7 @@
  *= require font-awesome
  *= require_self
  */
+
+thead {
+  text-align: center;
+}

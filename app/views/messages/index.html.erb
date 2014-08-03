@@ -15,7 +15,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Decrypt</th>
+              <th>View</th>
               <th>From</th>
               <th>Title</th>
               <th>Urgent</th>
@@ -29,7 +29,7 @@
               <tr>
                 <td>
                   <%= link_to message_path(message.id) do %>
-                    <i class="fa fa-bolt" style="font-size: 24px"></i>
+                    <i class="fa fa-comment" style="font-size: 24px"></i>
                   <% end %>
                 </td>
 
@@ -39,17 +39,17 @@
 
                 <td>
                   <% if message.urgent %>
-                    <i class="fa fa-exclamation-circle"></i>
+                    <i class="fa fa-exclamation-circle" style="font-size: 24px"></i>
                   <% end %>
                 </td>
                 <td>
                   <% if message.read %>
-                    <i class="fa fa-check-circle"></i>
+                    <i class="fa fa-check-circle" style="font-size: 24px"></i>
                   <% end %>
                 </td>
                 <td>
                   <%= link_to message_path(message), method: :delete do %>
-                    <i class="fa fa-trash-o"></i>
+                    <i class="fa fa-trash-o" style="font-size: 24px"></i>
                   <% end %>
                 </td>
               </tr>
