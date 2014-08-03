@@ -20,6 +20,7 @@
               <th>Title</th>
               <th>Urgent</th>
               <th>Read</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -44,7 +45,12 @@
                 <td>
                   <% if message.read %>
                     <i class="fa fa-check-circle"></i>
-                  <% end%>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to message_path(message), method: :delete do %>
+                    <i class="fa fa-trash-o"></i>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
