@@ -1,8 +1,9 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :correct_user, except: [:index, :new, :create ]
+  respond_to :json
 
   def index
+    # @messages = current_user.messages.all
     @messages = Message.all.where("user_id = #{current_user.id}")
   end
 
@@ -21,6 +22,11 @@ class MessagesController < ApplicationController
     render nothing: true, status: 200
   end
 
+  def user_display
+    users = User.find_user(params[:query])
+    respond_with users
+  end
+
   def new
     @message = current_user.messages.build
   end
@@ -29,7 +35,6 @@ class MessagesController < ApplicationController
     @message = Message.create(message_params)
     @message.user_id = current_user.id
     @message.save
-
     redirect_to @message.save ? messages_path : new_message_path
   end
 
@@ -40,7 +45,7 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:title, :content, :urgent)
+    params.require(:message).permit(:send_to, :title, :content, :urgent)
   end
 
   def correct_user

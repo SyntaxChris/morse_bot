@@ -7,6 +7,11 @@
   <div class="panel-body">
 
     <%= form_for(@message) do |f| %>
+      <div class="form-group" id="send-to">
+        <ul id="user-results"></ul>
+        <%= f.text_field :send_to, class: "form-control", placeholder: "Username", autocomplete: "off" %>
+      </div>
+
       <div class="form-group">
         <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
       </div>
