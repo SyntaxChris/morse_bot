@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'rest-client'
+gem 'mailboxer'
 
 group :development, :test do
   gem 'pry'
