@@ -1,9 +1,0 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h4><%= @message.title %></h4>
-    <p id="message-content"><%= @message.content %></p>
-    <a href="#" id="decrypt-message">decrypt</a>
-  </div>
-</div>
-
-<%= link_to "Delete", message_path, :confirm => "Are you sure?", :method=>:delete %>

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
-  root 'messages#index'
-  get '/decrypt'       => 'messages#arduino'
-  get '/find-username' => 'messages#user_display'
-  resources :messages
 
+  root 'conversations#index'
+
+  devise_for :users
+  resources :conversations, only: [:index, :show, :new, :create] do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
 end

@@ -4,10 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :message_recipients
-  has_many :messages
-  has_many :messages, through: :message_recipients
-
+  acts_as_messageable
 
   attr_accessor :login
 
@@ -22,6 +19,14 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def name
+    return "#{username}"
+  end
+
+  def mailboxer_email(object)
+    email
   end
 
 end
