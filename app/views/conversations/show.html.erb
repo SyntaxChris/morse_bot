@@ -1,15 +1,13 @@
-<h1>
-  <%= conversation.subject %>
-</h1>
-<ul>
-  <%= content_tag_for(:li, conversation.receipts_for(current_user)) do |receipt| %>
-    <% message = receipt.message %>
-    <h3>
+<br>
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <%= content_tag_for(:div, conversation.receipts_for(current_user)) do |receipt| %>
+      <% message = receipt.message %>
       <%= message.subject %>
-    </h3>
-    <p>
-      <%= message.body %>
-    </p>
-  <% end %>
-</ul>
-<%= render 'messages/form', conversation: conversation %>
+      <p id="message-content"><%= message.body %></p>
+      <a href="#" id="decrypt-message">MORSE IT!</a>
+    <% end %>
+
+  </div>
+</div>

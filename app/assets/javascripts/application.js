@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require jquery-ui/autocomplete
+//= require underscore
 //= require turbolinks
 //= require_tree .

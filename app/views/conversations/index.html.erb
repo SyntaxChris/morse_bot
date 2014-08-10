@@ -1,14 +1,75 @@
-<h1>Conversations</h1>
-<h2>Inbox</h2>
-<ul>
-  <%= render collection: mailbox.inbox, partial: 'conversation' %>
-</ul>
-<h2>Sentbox</h2>
-<ul>
-  <%= render collection: mailbox.sentbox, partial: 'conversation' %>
-</ul>
-<h2>Trash</h2>
-<ul>
-  <%= render collection: mailbox.trash, partial: 'conversation' %>
-</ul>
-<%= link_to 'Start Conversation', :new_conversation %>
+<div class="container-fluid">
+
+  <div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+      <li><%= link_to 'New', :new_conversation, id: 'nav-new' %></li>
+      <li><%= link_to "Inbox", '#', id: 'nav-inbox' %></li>
+      <li><%= link_to "Sent", '#', id: 'nav-sent' %></li>
+      <li><%= link_to "Trash", '#', id: 'nav-trash' %></li>
+    </ul>
+  </div>
+
+  <div id="inbox">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="sub-header">Inbox</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Trash</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render collection: mailbox.inbox, partial: 'conversation' %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sent">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="sub-header">Sent</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Trash</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render collection: mailbox.sentbox, partial: 'conversation' %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="trash">
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="sub-header">Trash</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Untrash</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render collection: mailbox.trash, partial: 'conversation' %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

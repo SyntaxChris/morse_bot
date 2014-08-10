@@ -27,6 +27,12 @@ class ConversationsController < ApplicationController
     redirect_to :conversations
   end
 
+  def arduino
+    message = params[:message].downcase.gsub(" ", "+")
+    RestClient.get("arduino.local/morse?params=#{message}")
+    render nothing: true, status: 200
+  end
+
   private
 
   def mailbox

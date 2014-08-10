@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   root 'conversations#index'
 
-  devise_for :users
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
       post :reply
@@ -10,4 +11,7 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
+
+  get '/decrypt' => 'conversations#arduino'
+
 end

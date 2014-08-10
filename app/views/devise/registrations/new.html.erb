@@ -1,21 +1,50 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, autofocus: true %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<br>
+<form class="text-center col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render "shared/morse_bot_signup" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Sign up</h2>
+    </div>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="row">
+      <div class="col-md-12"><%= f.label :username %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">  <%= f.text_field :username, autofocus: true %></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12"><%= f.label :email %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><%= f.email_field :email, autofocus: true %></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12"><%= f.label :password %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><%= f.password_field :password, autocomplete: "off" %></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12"><%= f.label :password_confirmation %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <span><%= f.submit "Sign up", class: "btn btn-default" %></span>
+    <% end %>
+        <span><%= render "devise/shared/links" %></span>
+      </div>
+    </div>
+</form>
