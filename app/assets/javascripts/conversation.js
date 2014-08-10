@@ -1,9 +1,9 @@
 $(document).on('page:change', function(){
   var decrypt_button  = $('#decrypt-message'),
       message_content = $('#message-content').text(),
-      navIn = $('#nav-inbox'),
-      navSent = $('#nav-sent'),
-      navTrash = $('#nav-trash'),
+      navIn = $('#nav-inbox.text-center'),
+      navSent = $('#nav-sent.text-center'),
+      navTrash = $('#nav-trash.text-center'),
       inbox = $('#inbox'),
       sent = $('#sent'),
       trash = $('#trash');
