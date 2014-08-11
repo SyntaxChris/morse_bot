@@ -1,5 +1,3 @@
-<div class="container-fluid">
-
   <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
         <% if user_signed_in? %>
@@ -11,10 +9,44 @@
       <li><%= link_to "Trash", '#', id: 'nav-trash', class:"text-center" %></li>
     </ul>
   </div>
+  <br>
+
+  <div id="new_message" >
+    <div class="row">
+    <div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title text-center">New Message</h1>
+        </div>
+        <div class="panel-body">
+        <%= form_for :conversation, url: :conversations do |f| %>
+          <div class="form-group col-md-10 col-md-offset-1">
+            <%= f.text_field :recipients, class: "form-control", placeholder: "recipients" %>
+          </div>
+          <div class="form-group col-md-10 col-md-offset-1">
+            <%= f.text_field :subject, class: "form-control", placeholder: "subject" %>
+          </div>
+          <div class="form-group col-md-10 col-md-offset-1">
+            <%= f.text_field :body, as: :text, placeholder: "body", class: "form-control" %>
+          </div>
+          <div class="form-group col-md-10 col-md-offset-1">
+            <%= f.check_box :urgent, {}, "true", "false" %>
+            <%= f.label :urgent %>
+          </div>
+          <div class="form-group text-center">
+            <span><%= f.submit 'Send', class: 'btn btn-primary' %></span>
+            <%= f.submit 'Cancel', type: :reset, class: 'btn btn-danger' %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
   <div id="inbox">
     <div class="row">
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
           <div class="panel-heading">Inbox</div>
@@ -39,7 +71,7 @@
 
   <div id="sent">
     <div class="row">
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
           <div class="panel-heading">Sent</div>
@@ -64,7 +96,7 @@
 
   <div id="trash">
     <div class="row">
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
           <div class="panel-heading">Trash</div>
@@ -86,4 +118,3 @@
       </div>
     </div>
   </div>
-</div>

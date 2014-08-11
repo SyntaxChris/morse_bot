@@ -1,13 +1,11 @@
 <br>
 <div class="panel panel-default">
   <div class="panel-body">
-
     <%= content_tag_for(:div, conversation.receipts_for(current_user)) do |receipt| %>
       <% message = receipt.message %>
       <%= message.subject %>
       <p id="message-content"><%= message.body %></p>
       <a href="#" id="decrypt-message">MORSE IT!</a>
     <% end %>
-
   </div>
 </div>
