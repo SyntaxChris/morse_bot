@@ -7,7 +7,9 @@ class ConversationsController < ApplicationController
     recipients = User.where(email: recipient_emails).all
 
     conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
-    redirect_to conversation_path(conversation)
+    # redirect_to conversation_path(conversation)
+    # redirect_to :back
+    render partial: 'confirmation'
   end
 
   def reply
@@ -26,6 +28,7 @@ class ConversationsController < ApplicationController
   end
 
   def arduino
+    binding.pry
     message = params[:message].downcase.gsub(" ", "+")
     RestClient.get("arduino.local/morse?params=#{message}")
     render nothing: true, status: 200
