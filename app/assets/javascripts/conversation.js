@@ -39,13 +39,12 @@ $(document).on('page:change', function(){
 
 $(function() {
 
-  // $("#confirmation").hide
-  // $("input[value='Send']").click(function(){
-  //   debugger
-  //   $(this).click(function(e){
-  //     e.preventDefault();
-  //   });
-  // });
+
+  $("input[value='Send']").click(function(e){
+      e.stopPropogation;
+      debugger;
+
+  });
 
 
   $(".conversations").each(function(){
