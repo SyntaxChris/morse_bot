@@ -59,7 +59,7 @@
                   <th>Trash</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="inbox-container">
                 <%= render collection: mailbox.inbox, partial: 'conversation' %>
               </tbody>
             </table>
@@ -68,6 +68,8 @@
       </div>
     </div>
   </div>
+
+  <div class="row" id="show-inbox-convo"></div>
 
   <div id="sent">
     <div class="row">
@@ -84,7 +86,7 @@
                   <th>Trash</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="sent-container">
                 <%= render collection: mailbox.sentbox, partial: 'conversation' %>
               </tbody>
             </table>
@@ -93,6 +95,8 @@
       </div>
     </div>
   </div>
+
+  <div class="row" id="show-sent-convo"></div>
 
   <div id="trash">
     <div class="row">
@@ -109,7 +113,7 @@
                   <th>Untrash</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="trash-container">
                 <%= render collection: mailbox.trash, partial: 'conversation' %>
               </tbody>
             </table>
@@ -118,3 +122,5 @@
       </div>
     </div>
   </div>
+
+  <div class="row" id="show-trash-convo"></div>

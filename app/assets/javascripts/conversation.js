@@ -36,3 +36,32 @@ $(document).on('page:change', function(){
   });
 
 });
+
+$(function() {
+  $(".conversations").each(function(){
+    $(this).click(function(e) {
+      e.preventDefault();
+
+      if($(this).parents().eq(2).attr("id") === "inbox-container"){
+
+        $.get(document.location.origin + $(this).attr("href"), function(html) {
+          $("#show_inbox_convo").append(html);
+        });
+
+      }
+
+      if($(this).parents().eq(2).attr("id") === "sent-container"){
+        $.get(document.location.origin + $(this).attr("href"), function(html) {
+          $("#show_sent_convo").append(html);
+        });
+      }
+
+      if($(this).parents().eq(2).attr("id") === "trash-container"){
+        $.get(document.location.origin + $(this).attr("href"), function(html) {
+          $("#show_trash_convo").append(html);
+        });
+      }
+
+    });
+  });
+});
