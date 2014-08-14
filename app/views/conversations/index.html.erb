@@ -19,7 +19,7 @@
           <h1 class="panel-title text-center">New Message</h1>
         </div>
         <div class="panel-body">
-        <%= form_for :conversation, url: :conversations do |f| %>
+        <%= form_for :conversation, url: :conversations, remote: true do |f| %>
           <div class="form-group col-md-10 col-md-offset-1">
             <%= f.text_field :recipients, class: "form-control", placeholder: "recipients" %>
           </div>
@@ -42,6 +42,14 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <div id="convermation">
+    <div class="row">
+      <div class="col-sm-7 col-sm-offset-4 col-md-6 col-md-offset-4">
+      <%= render 'confirmation' %>
+      </div>
+    </div>
   </div>
 
   <div id="inbox">

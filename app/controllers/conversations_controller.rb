@@ -7,9 +7,13 @@ class ConversationsController < ApplicationController
     recipients = User.where(email: recipient_emails).all
 
     conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
+
     # redirect_to conversation_path(conversation)
     # redirect_to :back
-    render partial: 'confirmation'
+    # render partial: 'confirmation'
+    # render nothing: true
+    head :ok, :content_type => 'text/html'
+    # render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   def reply
